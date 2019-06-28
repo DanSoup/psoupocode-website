@@ -1,33 +1,54 @@
-.App {
-  text-align: center;
+* {
+  outline: red 1px solid;
+  outline-offset: -1px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+div.app {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@font-face {
+  font-family: Dimbo;
+  src: url('./components/fonts/DimboRegular.ttf');
+}
+
+* {
+  font-family: 'Dimbo', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+}
+
+.page-header > h1 {
+  font-size: 80px;
+  margin: 0px;
+}
+
+.page-header > h2 {
+  font-size: 32px;
+  margin: 0px;
+}
+
+nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
-.App-link {
-  color: #61dafb;
+h1#nav-title {
+  position: relative;
+  width: 0px;
+  overflow: hidden;
+  transition-duration: 0.5s;
+  /* font-size: 200px; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1#nav-title.on-screen {
+  /* font-size: 200px; */
+}
+
+button {
+  transition: 3s;
 }
