@@ -10,9 +10,11 @@ function App() {
       const nav = document.getElementsByTagName('nav')[0];
       const navTitle = document.getElementById('navbar-title');
       if (nav.offsetTop === e.target.scrollTop) {
-        setTimeout(() => navTitle.className = 'on-screen', 0);
+        // setTimeout(() => navTitle.className = 'on-screen', 0);
+        navTitle.className = 'on-screen';
       } else if (nav.offsetTop !== e.target.scrollTop) {
-        setTimeout(() => navTitle.className = '', 0);
+        // setTimeout(() => navTitle.className = '', 0);
+        navTitle.className = '';
       }
     }} className="app">
       <PageHeader/>

@@ -1,7 +1,7 @@
-* {
+/* * {
   outline: red 1px solid;
   outline-offset: -1px;
-}
+} */
 
 div.app {
   width: 100vw;
@@ -17,6 +17,14 @@ div.app {
 * {
   font-family: 'Dimbo', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  background-color: #FFFFFFFF;
 }
 
 .page-header > h1 {
@@ -37,12 +45,35 @@ nav {
   top: 0;
   transition-duration: 1s;
   transition-delay: 1s;
-  background-color: aqua;
+  background-color: #FFFFFFFF;
+  border-bottom: solid black 5px;
+  border-top: solid black 5px;
 }
 
 div#navbar-buttons {
-  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-grow: 10;
+}
 
+div#navbar-buttons > button {
+  background: #FFFFFFFF;
+  border: solid 4px #A0A0A0FF;
+  margin: 3px;
+  font-size: 30px;
+}
+
+div#navbar-buttons > button:hover {
+  background: #FFFFFFFF;
+  border: solid 4px #000000FF;
+  margin: 3px;
+  font-size: 30px;
+}
+
+div#navbar-buttons > button:active {
+  background: #FFFFFFFF;
+  border: solid 4px #FFFFFFFF;
+  margin: 3px;
 }
 
 div#navbar-title {
@@ -52,6 +83,9 @@ div#navbar-title {
   overflow: hidden;
   transition-duration: 0.5s;
   /* font-size: 200px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 div#navbar-title > h1 {
@@ -59,9 +93,6 @@ div#navbar-title > h1 {
 }
 
 div#navbar-title.on-screen {
-  flex-grow: 1;
-}
-
-button {
-  transition: 3s;
+  width: 200px;
+  /* flex-grow: 1; */
 }
