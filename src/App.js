@@ -8,21 +8,23 @@ function App() {
   return (
     <div onScroll={e => {
       const nav = document.getElementsByTagName('nav')[0];
-      if (nav.offsetTop === e.target.scrollTop && !document.getElementById('nav-title')) {
-        const navTitle = document.createElement('h1');
-        navTitle.id = 'nav-title';
-        navTitle.innerText = 'PSOUPOCODE';
-        nav.insertBefore(navTitle, nav.firstChild)
-        setTimeout(() => document.getElementById('nav-title').className = 'on-screen', 0)
-      } else if (nav.offsetTop !== e.target.scrollTop && document.getElementById('nav-title')) {
-        document.getElementById('nav-title').remove();
+      const navTitle = document.getElementById('navbar-title');
+      if (nav.offsetTop === e.target.scrollTop) {
+        setTimeout(() => navTitle.className = 'on-screen', 0);
+      } else if (nav.offsetTop !== e.target.scrollTop) {
+        setTimeout(() => navTitle.className = '', 0);
       }
     }} className="app">
       <PageHeader/>
       <nav>
-        <button onClick={() => window.history.pushState({}, 'boogie boogie', '/')}>Home</button>
-        <button onClick={() => window.history.pushState({}, 'boogie boogie', '/categories')}>Categories</button>
-        <button onClick={() => window.history.pushState({}, 'boogie boogie', '/about')}>About</button>
+        <div id="navbar-title">
+          <h1>PSOUPOCODE</h1>
+        </div>
+        <div id="navbar-buttons">
+          <button onClick={() => window.history.pushState({}, 'boogie boogie', '/')}>Home</button>
+          <button onClick={() => window.history.pushState({}, 'boogie boogie', '/categories')}>Categories</button>
+          <button onClick={() => window.history.pushState({}, 'boogie boogie', '/about')}>About</button>
+        </div>
       </nav>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lacinia felis eget malesuada. Donec interdum, erat vitae pulvinar sollicitudin, sem leo lacinia lectus, a imperdiet elit magna a ex. Vestibulum molestie lorem ac varius suscipit. Quisque gravida ex odio, dictum vestibulum lacus cursus non. Mauris dui ante, egestas quis felis non, consequat euismod mauris. Praesent id mauris ac nulla eleifend finibus a nec nulla. Nulla aliquet velit mollis volutpat porta. Sed sit amet ipsum dolor. Nullam id dui nec purus dapibus sollicitudin. Maecenas neque enim, convallis aliquet urna ac, facilisis hendrerit velit. Aliquam ac consectetur velit. Donec egestas, purus non malesuada ultrices, tellus purus aliquam enim, sit amet euismod tellus lectus vitae nunc.</p>
       <p>Curabitur tincidunt vel est at accumsan. Nulla eros augue, mollis eget tempor in, suscipit eu dui. Morbi ex diam, condimentum sit amet auctor ut, ultricies vel turpis. Ut auctor quam ac fringilla pulvinar. Ut in erat porta, fermentum nunc a, porttitor justo. Integer in aliquam massa. Sed ultrices nulla at efficitur semper. Aenean sit amet euismod nibh. Fusce tincidunt eros sed mattis rhoncus. Suspendisse efficitur erat eget ligula scelerisque tincidunt. Phasellus ultrices a mauris id mollis. Nullam id gravida eros.</p>

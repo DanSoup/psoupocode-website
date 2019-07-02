@@ -35,9 +35,18 @@ nav {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  transition-duration: 1s;
+  transition-delay: 1s;
+  background-color: aqua;
 }
 
-h1#nav-title {
+div#navbar-buttons {
+  flex-grow: 1;
+
+}
+
+div#navbar-title {
+  flex-grow: 0;
   position: relative;
   width: 0px;
   overflow: hidden;
@@ -45,8 +54,12 @@ h1#nav-title {
   /* font-size: 200px; */
 }
 
-h1#nav-title.on-screen {
-  /* font-size: 200px; */
+div#navbar-title > h1 {
+  margin: 0px;
+}
+
+div#navbar-title.on-screen {
+  flex-grow: 1;
 }
 
 button {
