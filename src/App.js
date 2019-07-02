@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './normalize.css';
 import './App.css';
 import PageHeader from './components/pageHeader/pageHeader.js';
 
 function App() {
+
+  const [sPathName, uPathName] = useState(window.location.pathname)
+
+  const navigate = (path) => {
+    window.history.pushState({}, 'boogie boogie', path)
+    uPathName(window.location.pathname)
+  }
+
   return (
     <div onScroll={e => {
       const nav = document.getElementsByTagName('nav')[0];
@@ -23,11 +31,18 @@ function App() {
           <h1>PSOUPOCODE</h1>
         </div>
         <div id="navbar-buttons">
-          <button onClick={() => window.history.pushState({}, 'boogie boogie', '/')}>Home</button>
-          <button onClick={() => window.history.pushState({}, 'boogie boogie', '/categories')}>Categories</button>
-          <button onClick={() => window.history.pushState({}, 'boogie boogie', '/about')}>About</button>
+          <button onClick={() => navigate('/')}>Home</button>
+          <button onClick={() => navigate('/categories')}>Categories</button>
+          <button onClick={() => navigate('/about')}>About</button>
         </div>
       </nav>
+      {window.location.pathname === '/' && <h1>HOME</h1>}
+      {window.location.pathname === '/categories' && <h1>CATS</h1>}
+      {window.location.pathname === '/about' && <h1>ABOUT</h1>}
+      <h1 className={window.location.pathname === '/' ? '' : 'hidden'}>HOME</h1>
+      <h1 className={window.location.pathname === '/categories' ? '' : 'hidden'}>CATS</h1>
+      <h1 className={window.location.pathname === '/about' ? '' : 'hidden'}>ABOUT</h1>
+      <p>{JSON.stringify(window.location)}</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lacinia felis eget malesuada. Donec interdum, erat vitae pulvinar sollicitudin, sem leo lacinia lectus, a imperdiet elit magna a ex. Vestibulum molestie lorem ac varius suscipit. Quisque gravida ex odio, dictum vestibulum lacus cursus non. Mauris dui ante, egestas quis felis non, consequat euismod mauris. Praesent id mauris ac nulla eleifend finibus a nec nulla. Nulla aliquet velit mollis volutpat porta. Sed sit amet ipsum dolor. Nullam id dui nec purus dapibus sollicitudin. Maecenas neque enim, convallis aliquet urna ac, facilisis hendrerit velit. Aliquam ac consectetur velit. Donec egestas, purus non malesuada ultrices, tellus purus aliquam enim, sit amet euismod tellus lectus vitae nunc.</p>
       <p>Curabitur tincidunt vel est at accumsan. Nulla eros augue, mollis eget tempor in, suscipit eu dui. Morbi ex diam, condimentum sit amet auctor ut, ultricies vel turpis. Ut auctor quam ac fringilla pulvinar. Ut in erat porta, fermentum nunc a, porttitor justo. Integer in aliquam massa. Sed ultrices nulla at efficitur semper. Aenean sit amet euismod nibh. Fusce tincidunt eros sed mattis rhoncus. Suspendisse efficitur erat eget ligula scelerisque tincidunt. Phasellus ultrices a mauris id mollis. Nullam id gravida eros.</p>
       <p>Aliquam enim dui, ornare id nisi at, egestas posuere mauris. Sed quis augue nec mauris interdum vulputate. Aliquam scelerisque, odio et faucibus bibendum, diam felis interdum risus, rhoncus vestibulum nunc lacus vitae augue. Donec mattis ultrices posuere. Donec consequat eu elit non sollicitudin. In tristique sapien a ipsum fringilla commodo. Donec nunc dui, blandit eget blandit a, vulputate ac tortor. Nunc in tempor metus. Suspendisse posuere fermentum massa, a fermentum nisl dignissim ac. Donec in rhoncus nibh.</p>

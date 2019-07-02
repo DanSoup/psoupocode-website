@@ -3,6 +3,11 @@
   outline-offset: -1px;
 } */
 
+.hidden {
+  display: none;
+  transition: 5s
+}
+
 div.app {
   width: 100vw;
   height: 100vh;
