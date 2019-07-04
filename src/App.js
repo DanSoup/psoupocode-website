@@ -6,11 +6,22 @@ import PageHeader from './components/pageHeader/pageHeader.js';
 
 function App() {
 
-  const [sPathName, uPathName] = useState(window.location.pathname)
+  const [sPathName, uPathName] = useState(window.location.pathname);
+  const [sLastPathName, uLastPathName] = useState(window.location.pathname);
+  const [sPageChanging, uPageChanging] = useState(false);
 
   const navigate = (path) => {
-    window.history.pushState({}, 'boogie boogie', path)
-    uPathName(window.location.pathname)
+    window.history.pushState({}, 'boogie boogie', path);
+    uPathName(window.location.pathname);
+  }
+
+  console.log(sLastPathName, sPathName)
+
+  const RoutePage = ({path, children}) => {
+    console.log(path)
+    return (
+      <div onTransitionEnd={() => {if (sPathName !== sLastPathName) uLastPathName(sPathName)}} className={`route-page${sPathName === sLastPathName && sLastPathName === path ? '' : ' invisible'}${sLastPathName === path ? '' : ' hidden'}`}>{children}</div>
+    );
   }
 
   return (
@@ -31,17 +42,20 @@ function App() {
           <h1>PSOUPOCODE</h1>
         </div>
         <div id="navbar-buttons">
-          <button onClick={() => navigate('/')}>Home</button>
+          <button onClick={() => navigate('/')}><span>Home</span></button>
           <button onClick={() => navigate('/categories')}>Categories</button>
           <button onClick={() => navigate('/about')}>About</button>
         </div>
       </nav>
-      {window.location.pathname === '/' && <h1>HOME</h1>}
-      {window.location.pathname === '/categories' && <h1>CATS</h1>}
-      {window.location.pathname === '/about' && <h1>ABOUT</h1>}
-      <h1 className={window.location.pathname === '/' ? '' : 'hidden'}>HOME</h1>
-      <h1 className={window.location.pathname === '/categories' ? '' : 'hidden'}>CATS</h1>
-      <h1 className={window.location.pathname === '/about' ? '' : 'hidden'}>ABOUT</h1>
+      {window.location.pathname === '/' && <div><h1>HOME</h1></div>}
+      {window.location.pathname === '/categories' && <div><h1>CATS</h1></div>}
+      {window.location.pathname === '/about' && <div><h1>ABOUT</h1></div>}
+      <RoutePage path="/"><h1>Home</h1></RoutePage>
+      <RoutePage path="/categories"><h1>Cats</h1></RoutePage>
+      <RoutePage path="/about"><h1>About</h1></RoutePage>
+      {/* {sLastPathName === '/' && <h1 onTransitionEnd={() => {if (sPathName !== sLastPathName) uLastPathName(sPathName)}} className={sPathName === sLastPathName && sLastPathName === '/' ? '' : 'invisible'}>HOME</h1>}
+      {sLastPathName === '/categories' && <h1 onTransitionEnd={() => {if (sPathName !== sLastPathName) uLastPathName(sPathName)}} className={sPathName === sLastPathName && sLastPathName === '/categories' ? '' : 'invisible'}>CATS</h1>}
+      {sLastPathName === '/about' && <h1 onTransitionEnd={() => {if (sPathName !== sLastPathName) uLastPathName(sPathName)}} className={sPathName === sLastPathName && sLastPathName === '/about' ? '' : 'invisible'}>ABOUT</h1>} */}
       <p>{JSON.stringify(window.location)}</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lacinia felis eget malesuada. Donec interdum, erat vitae pulvinar sollicitudin, sem leo lacinia lectus, a imperdiet elit magna a ex. Vestibulum molestie lorem ac varius suscipit. Quisque gravida ex odio, dictum vestibulum lacus cursus non. Mauris dui ante, egestas quis felis non, consequat euismod mauris. Praesent id mauris ac nulla eleifend finibus a nec nulla. Nulla aliquet velit mollis volutpat porta. Sed sit amet ipsum dolor. Nullam id dui nec purus dapibus sollicitudin. Maecenas neque enim, convallis aliquet urna ac, facilisis hendrerit velit. Aliquam ac consectetur velit. Donec egestas, purus non malesuada ultrices, tellus purus aliquam enim, sit amet euismod tellus lectus vitae nunc.</p>
       <p>Curabitur tincidunt vel est at accumsan. Nulla eros augue, mollis eget tempor in, suscipit eu dui. Morbi ex diam, condimentum sit amet auctor ut, ultricies vel turpis. Ut auctor quam ac fringilla pulvinar. Ut in erat porta, fermentum nunc a, porttitor justo. Integer in aliquam massa. Sed ultrices nulla at efficitur semper. Aenean sit amet euismod nibh. Fusce tincidunt eros sed mattis rhoncus. Suspendisse efficitur erat eget ligula scelerisque tincidunt. Phasellus ultrices a mauris id mollis. Nullam id gravida eros.</p>

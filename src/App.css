@@ -3,6 +3,10 @@
   outline-offset: -1px;
 } */
 
+button, button:active {
+  padding: 0px 8px;
+}
+
 .hidden {
   display: none;
   transition: 5s
@@ -100,4 +104,14 @@ div#navbar-title > h1 {
 div#navbar-title.on-screen {
   width: 200px;
   /* flex-grow: 1; */
+}
+
+div.route-page {
+  transition-duration: 1s;
+  opacity: 1;
+}
+
+div.route-page.invisible {
+  opacity: 0.5;
+  transition-duration: 1s;
 }
