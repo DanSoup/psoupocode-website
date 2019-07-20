@@ -1,27 +1,48 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import logo from './logo.svg';
 import './normalize.css';
 import './App.css';
 import PageHeader from './components/pageHeader/pageHeader.js';
+import Categories from './components/categories/categories.js';
 
 function App() {
 
-  const [sPathName, uPathName] = useState(window.location.pathname);
-  const [sLastPathName, uLastPathName] = useState(window.location.pathname);
-  const [sPageChanging, uPageChanging] = useState(false);
+  const [sCurrentPath, uCurrentPath] = useState(window.location.pathname);
+  const [sLastPath, uLastPath] = useState(window.location.pathname);
+  const rAnimatingPages = useRef(0);
+  const rVisiblePages = useRef(0);
 
-  const navigate = (path) => {
-    window.history.pushState({}, 'boogie boogie', path);
-    uPathName(window.location.pathname);
+  const navigate = path => {
+    window.history.pushState({}, '', path);
+    uCurrentPath(path);
   }
 
-  console.log(sLastPathName, sPathName)
+  useEffect(() => {
+    if (rAnimatingPages.current === 0) uLastPath(sCurrentPath)
+  })
 
-  const RoutePage = ({path, children}) => {
-    console.log(path)
-    return (
-      <div onTransitionEnd={() => {if (sPathName !== sLastPathName) uLastPathName(sPathName)}} className={`route-page${sPathName === sLastPathName && sLastPathName === path ? '' : ' invisible'}${sLastPathName === path ? '' : ' hidden'}`}>{children}</div>
-    );
+  useEffect(() => {
+    if (rVisiblePages.current === 0) uLastPath(sCurrentPath)
+  })
+
+  const RoutePage = ({children, path}) => {
+
+    const pathRegex = new RegExp('^' + path.replace('/*', '(?:/*)¬').replace('*', '.*?').replace('¬', '*') + '$')
+
+    if (pathRegex.test(sLastPath)) {
+      if (pathRegex.test(sCurrentPath)) {
+        console.log(sLastPath, sCurrentPath)
+        if (false) return <div className="route-page-visible">{children}</div>;
+        else return <div className="route-page-fade-in">{children}</div>;
+      } else {
+        rAnimatingPages.current = 1;
+        return <div onAnimationEnd={() => {
+          rAnimatingPages.current = 0;
+          uLastPath(sCurrentPath);
+        }} className="route-page-fade-out">{children}</div>;
+      }
+    }
+    else return null;
   }
 
   return (
@@ -29,10 +50,8 @@ function App() {
       const nav = document.getElementsByTagName('nav')[0];
       const navTitle = document.getElementById('navbar-title');
       if (nav.offsetTop === e.target.scrollTop) {
-        // setTimeout(() => navTitle.className = 'on-screen', 0);
         navTitle.className = 'on-screen';
       } else if (nav.offsetTop !== e.target.scrollTop) {
-        // setTimeout(() => navTitle.className = '', 0);
         navTitle.className = '';
       }
     }} className="app">
@@ -44,19 +63,18 @@ function App() {
         <div id="navbar-buttons">
           <button onClick={() => navigate('/')}><span>Home</span></button>
           <button onClick={() => navigate('/categories')}>Categories</button>
+          <button onClick={() => navigate('/categories/sub')}>Sub Categories</button>
           <button onClick={() => navigate('/about')}>About</button>
         </div>
       </nav>
-      {window.location.pathname === '/' && <div><h1>HOME</h1></div>}
-      {window.location.pathname === '/categories' && <div><h1>CATS</h1></div>}
-      {window.location.pathname === '/about' && <div><h1>ABOUT</h1></div>}
+      <p>sCurrentPath: {sCurrentPath}</p>
+      <p>sLastPath: {sLastPath}</p>
+      <p>rAnimatingPages: {JSON.stringify(rAnimatingPages)}</p>
       <RoutePage path="/"><h1>Home</h1></RoutePage>
-      <RoutePage path="/categories"><h1>Cats</h1></RoutePage>
+      <RoutePage path="/categories"><h1>Categories</h1></RoutePage>
+      <RoutePage path="/categories/sub"><h1>Sub Categories</h1></RoutePage>
       <RoutePage path="/about"><h1>About</h1></RoutePage>
-      {/* {sLastPathName === '/' && <h1 onTransitionEnd={() => {if (sPathName !== sLastPathName) uLastPathName(sPathName)}} className={sPathName === sLastPathName && sLastPathName === '/' ? '' : 'invisible'}>HOME</h1>}
-      {sLastPathName === '/categories' && <h1 onTransitionEnd={() => {if (sPathName !== sLastPathName) uLastPathName(sPathName)}} className={sPathName === sLastPathName && sLastPathName === '/categories' ? '' : 'invisible'}>CATS</h1>}
-      {sLastPathName === '/about' && <h1 onTransitionEnd={() => {if (sPathName !== sLastPathName) uLastPathName(sPathName)}} className={sPathName === sLastPathName && sLastPathName === '/about' ? '' : 'invisible'}>ABOUT</h1>} */}
-      <p>{JSON.stringify(window.location)}</p>
+      <div className='route-page invisible hidden' data-path="/about"><h1>ABOUT</h1></div>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lacinia felis eget malesuada. Donec interdum, erat vitae pulvinar sollicitudin, sem leo lacinia lectus, a imperdiet elit magna a ex. Vestibulum molestie lorem ac varius suscipit. Quisque gravida ex odio, dictum vestibulum lacus cursus non. Mauris dui ante, egestas quis felis non, consequat euismod mauris. Praesent id mauris ac nulla eleifend finibus a nec nulla. Nulla aliquet velit mollis volutpat porta. Sed sit amet ipsum dolor. Nullam id dui nec purus dapibus sollicitudin. Maecenas neque enim, convallis aliquet urna ac, facilisis hendrerit velit. Aliquam ac consectetur velit. Donec egestas, purus non malesuada ultrices, tellus purus aliquam enim, sit amet euismod tellus lectus vitae nunc.</p>
       <p>Curabitur tincidunt vel est at accumsan. Nulla eros augue, mollis eget tempor in, suscipit eu dui. Morbi ex diam, condimentum sit amet auctor ut, ultricies vel turpis. Ut auctor quam ac fringilla pulvinar. Ut in erat porta, fermentum nunc a, porttitor justo. Integer in aliquam massa. Sed ultrices nulla at efficitur semper. Aenean sit amet euismod nibh. Fusce tincidunt eros sed mattis rhoncus. Suspendisse efficitur erat eget ligula scelerisque tincidunt. Phasellus ultrices a mauris id mollis. Nullam id gravida eros.</p>
       <p>Aliquam enim dui, ornare id nisi at, egestas posuere mauris. Sed quis augue nec mauris interdum vulputate. Aliquam scelerisque, odio et faucibus bibendum, diam felis interdum risus, rhoncus vestibulum nunc lacus vitae augue. Donec mattis ultrices posuere. Donec consequat eu elit non sollicitudin. In tristique sapien a ipsum fringilla commodo. Donec nunc dui, blandit eget blandit a, vulputate ac tortor. Nunc in tempor metus. Suspendisse posuere fermentum massa, a fermentum nisl dignissim ac. Donec in rhoncus nibh.</p>

@@ -1,3 +1,25 @@
+div.route-page-fade-in {
+  animation: route-page-fade-in 2s 1 linear;
+}
+
+div.route-page-fade-out {
+  animation: route-page-fade-out 2s 1 linear;
+}
+
+div.route-page-visible {
+  opacity: 1;
+}
+
+@keyframes route-page-fade-in {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@keyframes route-page-fade-out {
+  0% {opacity: 1}
+  100% {opacity: 0}
+}
+
 /* * {
   outline: red 1px solid;
   outline-offset: -1px;
@@ -9,7 +31,7 @@ button, button:active {
 
 .hidden {
   display: none;
-  transition: 5s
+  transition: 5s;
 }
 
 div.app {
@@ -107,11 +129,11 @@ div#navbar-title.on-screen {
 }
 
 div.route-page {
-  transition-duration: 1s;
+  transition-duration: 0.5s;
   opacity: 1;
 }
 
 div.route-page.invisible {
-  opacity: 0.5;
-  transition-duration: 1s;
+  opacity: 0;
+  transition-duration: 0.5s;
 }
