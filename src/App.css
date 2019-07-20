@@ -1,25 +1,3 @@
-div.route-page-fade-in {
-  animation: route-page-fade-in 2s 1 linear;
-}
-
-div.route-page-fade-out {
-  animation: route-page-fade-out 2s 1 linear;
-}
-
-div.route-page-visible {
-  opacity: 1;
-}
-
-@keyframes route-page-fade-in {
-  0% {opacity: 0}
-  100% {opacity: 1}
-}
-
-@keyframes route-page-fade-out {
-  0% {opacity: 1}
-  100% {opacity: 0}
-}
-
 /* * {
   outline: red 1px solid;
   outline-offset: -1px;
@@ -48,6 +26,10 @@ div.app {
 * {
   font-family: 'Dimbo', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+}
+
+p {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .page-header {
