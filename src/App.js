@@ -6,6 +6,7 @@ import PageHeader from './components/pageHeader/pageHeader.js';
 import Categories from './components/categories/categories.js';
 import Home from './components/home/home.js';
 import AboutPage from './components/about/about.js';
+import EgPage from './components/eg/eg.js';
 
 function App() {
 
@@ -81,6 +82,7 @@ function App() {
         <RoutePage path="/categories"><Categories/></RoutePage>
         <RoutePage path="/categories/sub"><h1>Sub Categories</h1></RoutePage>
         <RoutePage path="/about"><AboutPage/></RoutePage>
+        <RoutePage path="/eg"><EgPage/></RoutePage>
       </RouteContainer>
       {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum lacinia felis eget malesuada. Donec interdum, erat vitae pulvinar sollicitudin, sem leo lacinia lectus, a imperdiet elit magna a ex. Vestibulum molestie lorem ac varius suscipit. Quisque gravida ex odio, dictum vestibulum lacus cursus non. Mauris dui ante, egestas quis felis non, consequat euismod mauris. Praesent id mauris ac nulla eleifend finibus a nec nulla. Nulla aliquet velit mollis volutpat porta. Sed sit amet ipsum dolor. Nullam id dui nec purus dapibus sollicitudin. Maecenas neque enim, convallis aliquet urna ac, facilisis hendrerit velit. Aliquam ac consectetur velit. Donec egestas, purus non malesuada ultrices, tellus purus aliquam enim, sit amet euismod tellus lectus vitae nunc.</p>
       <p>Curabitur tincidunt vel est at accumsan. Nulla eros augue, mollis eget tempor in, suscipit eu dui. Morbi ex diam, condimentum sit amet auctor ut, ultricies vel turpis. Ut auctor quam ac fringilla pulvinar. Ut in erat porta, fermentum nunc a, porttitor justo. Integer in aliquam massa. Sed ultrices nulla at efficitur semper. Aenean sit amet euismod nibh. Fusce tincidunt eros sed mattis rhoncus. Suspendisse efficitur erat eget ligula scelerisque tincidunt. Phasellus ultrices a mauris id mollis. Nullam id gravida eros.</p>

@@ -65,6 +65,7 @@ nav {
   background-color: #FFFFFFFF;
   border-bottom: solid black 5px;
   border-top: solid black 5px;
+  left: 0;
 }
 
 div#navbar-buttons {
