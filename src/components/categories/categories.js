@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Categories = (props) => {
 
-  return <div>
+  return <div className="content-page">
     <h1>Categories</h1>
     <p>Select a category from the list below.</p>
     <div>

@@ -18,6 +18,10 @@ div.app {
   overflow-x: hidden;
 }
 
+div.content-page {
+  padding: 10px;
+}
+
 @font-face {
   font-family: Dimbo;
   src: url('./components/fonts/DimboRegular.ttf');
