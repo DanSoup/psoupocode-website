@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import image from '../../images/panda.png';
 import './article.css';
 
-const Eg = (props) => {
+const Article = ({data}) => {
 
   const ColoredCode = ({code}) => {
 
@@ -98,8 +98,8 @@ const Eg = (props) => {
 
 }
 
-Eg.propTypes = {
+Article.propTypes = {
 
 };
 
-export default Eg;
+export default Article;
