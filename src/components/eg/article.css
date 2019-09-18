@@ -1,4 +1,4 @@
-div.article {
+div.article-container {
   width: 100vw;
   padding: 20px;
   display: flex;
@@ -6,7 +6,7 @@ div.article {
   align-items: center;
 }
 
-div.inner-article {
+article {
   width: 100vw;
   max-width: 700px;
   display: flex;
@@ -14,35 +14,50 @@ div.inner-article {
   /* align-items: center; */
 }
 
-div.article h1 {
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+article nav {
+  position: relative;
+  z-index: 0;
+}
+
+article h1 {
   font-size: 4em;
   margin: 0px;
 }
 
-div.article h2 {
+article h2 {
   font-size: 3em;
   margin: 0px;
 }
 
-div.article h3 {
+article h3 {
   font-size: 2em;
   margin: 20px 0px 0px 0px;
 }
 
-div.article p {
+article h4 {
+  font-size: 2em;
+  margin: 20px 0px 0px 0px;
+}
+
+article p {
   margin: 10px 0px 10px 0px;
 }
 
-div.article div.code {
+article div.code {
   border: solid 2px red;
 }
 
-div.article div.code p {
+article div.code p {
   font-family: 'Courier New', Courier, monospace;
   white-space: pre;
 }
 
-div.article code {
+article code {
   width: fit-content;
   border: solid 4px black;
   background-color: #ddddddff;
@@ -52,12 +67,12 @@ div.article code {
   padding: 15px 15px 15px 15px;
 }
 
-div.article code p.code {
+article code p.code {
   font-family: 'Courier New', Courier, monospace;
   margin: 2px;
 }
 
-div.article figure {
+article figure {
   border: solid black 4px;
   padding: 4px;
   margin: 4px;
@@ -66,81 +81,85 @@ div.article figure {
   flex-direction: column;
 }
 
-div.article figcaption {
+article figcaption {
   font-size: 1.5em;
 }
 
-div.article a[name] {
+article a[name] {
   display: block;
   position: relative;
   top: -55px;
   visibility: hidden;
 }
 
-div.article ul.contents li {
+article ul.contents li {
   font-size: 1.5em;
 }
 
-div.article ul.contents li a {
+article ul.contents li a {
   text-decoration: none;
 }
 
-div.article a:link {
+article a:link {
   color: black;
 }
 
 
-div.article a:visited {
+article a:visited {
   color: #222222ff;
 }
 
 
-div.article a:hover {
+article a:hover {
   color: red;
 }
 
-div.article code p {
+article code p {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   margin: 0px;
 }
 
-div.article code p span {
+article code p span {
   font-family: 'Courier New', Courier, monospace;
 }
 
-div.article span.code-p {
+article span.code-p {
   color: #8000ff;
 }
 
-div.article span.code-l {
+article span.code-l {
   color: #408000;
 }
 
-div.article span.code-c {
+article span.code-c {
   color: #008080;
 }
 
-div.article span.code-b {
+article span.code-b {
   color: #0000bb;
 }
 
-div.article span.code-y {
+article span.code-y {
   color: #606000;
 }
 
-div.article span.code-t {
+article span.code-t {
   color: #008040;
 }
 
-div.article span.code-o {
+article span.code-o {
   color: #803000;
 }
 
-div.article span.code-r {
+article span.code-r {
   color: #800000;
 }
 
-div.article span.code-g {
+article span.code-g {
   color: #006000;
+}
+
+article section.about-this-article p {
+  margin: 0px;
 }
