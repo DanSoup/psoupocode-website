@@ -1,7 +1,17 @@
 div.article {
   width: 100vw;
-  max-width: 700px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.inner-article {
+  width: 100vw;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
 }
 
 div.article h1 {
@@ -16,7 +26,7 @@ div.article h2 {
 
 div.article h3 {
   font-size: 2em;
-  margin: 0px;
+  margin: 20px 0px 0px 0px;
 }
 
 div.article p {
@@ -39,15 +49,21 @@ div.article code {
   display: inline-block;
   white-space: pre;
   margin: 5px;
-  padding: 5px;
+  padding: 15px 15px 15px 15px;
+}
+
+div.article code p.code {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 2px;
 }
 
 div.article figure {
-  display: inline-block;
-  width: fit-content;
   border: solid black 4px;
   padding: 4px;
   margin: 4px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 div.article figcaption {
@@ -81,4 +97,50 @@ div.article a:visited {
 
 div.article a:hover {
   color: red;
+}
+
+div.article code p {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  margin: 0px;
+}
+
+div.article code p span {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+div.article span.code-p {
+  color: #8000ff;
+}
+
+div.article span.code-l {
+  color: #408000;
+}
+
+div.article span.code-c {
+  color: #008080;
+}
+
+div.article span.code-b {
+  color: #0000bb;
+}
+
+div.article span.code-y {
+  color: #606000;
+}
+
+div.article span.code-t {
+  color: #008040;
+}
+
+div.article span.code-o {
+  color: #803000;
+}
+
+div.article span.code-r {
+  color: #800000;
+}
+
+div.article span.code-g {
+  color: #006000;
 }
