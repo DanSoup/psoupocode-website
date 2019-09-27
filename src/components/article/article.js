@@ -29,6 +29,7 @@ const Article = ({data}) => {
       if (typeof content === 'string') {
         let newContent = content.replace(/~i(.+?)~/g, '<em>$1</em>');
         newContent = newContent.replace(/~b(.+?)~/g, '<strong>$1</strong>');
+        newContent = newContent.replace(/`(.+?)`/g, '<code class=inline>$1</code>');
         return <p dangerouslySetInnerHTML={{__html: newContent}}></p>
       } else return <>
         {content.map((line, i) => {

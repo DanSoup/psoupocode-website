@@ -8,6 +8,8 @@ import Home from './components/home/home.js';
 import AboutPage from './components/about/about.js';
 import EgPage from './components/eg/eg.js';
 import Article from './components/article/article.js';
+import ArticleList from './components/articleList/articleList.js';
+import articles from './components/raw/articles.js';
 
 function App() {
 
@@ -25,8 +27,14 @@ function App() {
 
   const RouteContainer = (props) => {
 
-    const visibleChildren = [...props.children].filter(child => {
-      return child.props.path === sCurrentPath
+    const allChildren = props.children.reduce((acc, child) => {
+      if (Array.isArray(child)) acc.push(...child)
+      else acc.push(child)
+      return acc;
+    }, []);
+
+    const visibleChildren = allChildren.filter(child => {
+      return child.props.path === sCurrentPath;
     });
 
     if (visibleChildren.length < 1) return <Error404/>;
@@ -84,10 +92,19 @@ function App() {
         <RoutePage path="/categories/sub"><h1>Sub Categories</h1></RoutePage>
         <RoutePage path="/about"><AboutPage/></RoutePage>
         <RoutePage path="/eg"><EgPage/></RoutePage>
+        <RoutePage path="/article"><ArticleList articles={articles}/></RoutePage>
+
+        {articles.map(article => {
+          return <RoutePage path={`/article/${article.slug}`}><Article data={article}/></RoutePage>
+        })}
+
         <RoutePage path="/eg2"><Article data={
           {
             title: 'IF STATEMENTS - LESSON 1',
             subTitle: 'JavaScript',
+            // slug: () => {
+            //   return this.subTitle;
+            // },
             sections: [
               {
                 title: 'Summary',

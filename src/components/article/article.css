@@ -83,6 +83,17 @@ article code {
   padding: 15px 15px 15px 15px;
 }
 
+article code.inline {
+  font-family: 'Courier New', Courier, monospace;
+  width: fit-content;
+  border: none;
+  background-color: unset;
+  display: inline-block;
+  white-space: pre;
+  margin: 0px;
+  padding: 0px;
+}
+
 article code p.code {
   font-family: 'Courier New', Courier, monospace;
   margin: 2px;
