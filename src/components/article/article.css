@@ -48,6 +48,22 @@ article p {
   margin: 10px 0px 10px 0px;
 }
 
+article p * {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+article p.top {
+  margin: 10px 0px 0px 0px;
+}
+
+article p.mid {
+  margin: 0px 0px 0px 0px;
+}
+
+article p.bot {
+  margin: 0px 0px 10px 0px;
+}
+
 article div.code {
   border: solid 2px red;
 }
@@ -126,6 +142,10 @@ article code p span {
 
 article span.code-p {
   color: #8000ff;
+}
+
+article span.code-m {
+  color: #800040;
 }
 
 article span.code-l {

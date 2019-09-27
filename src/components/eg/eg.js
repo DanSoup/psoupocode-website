@@ -18,7 +18,7 @@ const Eg = (props) => {
     </code> 
   }
 
-  return <div className="article-container">
+  return <div className="article-container" style={{backgroundColor: '#ffb0b0'}}>
     <article>
       <h1>IF STATEMENTS - LESSON 1</h1>
       <h2>JavaScript</h2>
@@ -44,6 +44,7 @@ const Eg = (props) => {
         <code>IF I am hungry THEN eat sandwich.</code>
         <p>I only eat the sandwich if I am hungry. I don't even consider eating the sandwich if I'm not hungry.</p>
         <figure>
+          <img src={require('../../images/panda.png')} alt="Me eating a sandwich"/>
           <img src={image} alt="Me eating a sandwich"/>
           <figcaption>I am, of course, always hungry.</figcaption>
         </figure>
