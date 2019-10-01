@@ -19,22 +19,20 @@ const articles = [
             "~blet~ ~cmyFavouriteFood~;",
             "~bvar~ ~cdogsAreGood~;"
           ]],
-          ['p', "I only eat the sandwich if I am hungry. I don't even consider eating the sandwich if I'm not hungry."],
-          ['i', {
-            src: "panda.png",
-            alt: "Pikachu pulling a face",
-            caption: "I am, of course, aways hungry."
-          }]
+          ['p', "The differences between `const`, `let` and `var` will be covered in VARIABLES LESSON 2. Until you reach VARIABLES LESSON 2 you should use the `let` keyword to declare your variables."],
+          ['p', "The name we give to a variable is known as its “identifier”. An identifier must start with a letter and may contain letters, numbers, `$`, and `_`. Identifiers are case sensitive, so `dogsAreGood` and `dogsaregood` will be considered two different variables."],
+          ['p', "Best practice for naming variables is to give them a name to represent their value and use “camelCase”. This is where you give each word in the identifier a capital letter except the first."],
+          ['p', "In general variables can only be declared once. If you declare a variable more than once you may receive an error message. This will be covered in more details in later lessons."]
         ]
       },
       {
-        title: 'The Structure',
+        title: 'Assignment',
         contents: [
-          ['p', "The basic if statement looks like this:"],
+          ['p', "To use a variable it must be “assigned” a value. This is performed by using the equals sign (`=`) and is done as follows:"],
           ['c', [
-            '~pif~ (~ccondition~) {',
-            '  ~ccode to execute~;',
-            '}'
+            '~cdaysInAYear~ = ~l365~;',
+            '~cmyFavouriteFood~ = ~r‘sausages’~;',
+            '~cdogsAreGood~ = ~btrue~;'
           ]],
           ['p', "The \"condition\" will be evaluated and if, it's evaluated to being truthy, the following code block is executed. As with any code block this could be one or more lines of code. If the condition is evaluated to falsy the code block is not executed."]
         ]
