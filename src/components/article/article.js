@@ -40,11 +40,27 @@ const Article = ({data}) => {
       </>
     }
 
+    const handleQ = content => {
+      if (typeof content === 'string') {
+        let newContent = content.replace(/~i(.+?)~/g, '<em>$1</em>');
+        newContent = newContent.replace(/~b(.+?)~/g, '<strong>$1</strong>');
+        newContent = newContent.replace(/`(.+?)`/g, '<code class=inline>$1</code>');
+        return <blockquote dangerouslySetInnerHTML={{__html: newContent}}></blockquote>
+      } else return <>
+        {content.map((line, i) => {
+          if (i === 0) return <p className="top">{line}</p>
+          else if (i === content.length - 1) return <p className="bot">{line}</p>
+          else return <p className="mid">{line}</p>
+        })}
+      </>
+    }
+
     return data.sections.map(section => {
       return <section>
         <a name={section.title.toLowerCase().replace(' ', '-')}/><h3>{section.title}</h3>
         {section.contents.map(contentPiece => {
           if (contentPiece[0] === 'p') return handleP(contentPiece[1])
+          else if (contentPiece[0] === 'q') return handleQ(contentPiece[1])
           else if (contentPiece[0] === 'c') return <ColoredCode code={contentPiece[1]}/>
           else if (contentPiece[0] === 'i') return <figure>
             <img src={require(`../../images/${contentPiece[1].src}`)} alt={contentPiece[1].alt}/>

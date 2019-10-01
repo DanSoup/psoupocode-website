@@ -19,6 +19,12 @@ section {
   flex-direction: column;
 }
 
+article blockquote {
+  border: solid black 4px;
+  padding: 15px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 article nav {
   position: relative;
   z-index: 0;
