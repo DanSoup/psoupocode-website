@@ -46,23 +46,6 @@ function App() {
 
     return children;
 
-    // const pathRegex = new RegExp('^' + path.replace('/*', '(?:/*)¬').replace('*', '.*?').replace('¬', '*') + '$')
-
-    // if (pathRegex.test(sLastPath)) {
-    //   if (pathRegex.test(sCurrentPath)) {
-    //     console.log(sLastPath, sCurrentPath)
-    //     if (false) return <div className="route-page-visible">{children}</div>;
-    //     else return <div className="route-page-fade-in">{children}</div>;
-    //   } else {
-    //     rAnimatingPages.current = 1;
-    //     return <div onAnimationEnd={() => {
-    //       rAnimatingPages.current = 0;
-    //       uLastPath(sCurrentPath);
-    //     }} className="route-page-fade-out">{children}</div>;
-    //   }
-    // }
-    // else return null;
-
   }
 
   return (
