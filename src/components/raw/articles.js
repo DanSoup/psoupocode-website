@@ -31,7 +31,7 @@ const articles = [
           ['p', "To use a variable it must be “assigned” a value. This is performed by using the equals sign (`=`) and is done as follows:"],
           ['c', [
             '~cdaysInAYear~ = ~l365~;',
-            '~cmyFavouriteFood~ = ~r‘sausages’~;',
+            '~cmyFavouriteFood~ = ~r\'sausages\'~;',
             '~cdogsAreGood~ = ~btrue~;'
           ]],
           ['p', "The \"condition\" will be evaluated and if, it's evaluated to being truthy, the following code block is executed. As with any code block this could be one or more lines of code. If the condition is evaluated to falsy the code block is not executed."]
